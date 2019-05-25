@@ -13,6 +13,7 @@ ul {
   border: 1px solid red;
   display: flex;
   flex-direction: row;
+  
 }
 
 .note {
@@ -32,5 +33,12 @@ ul {
 }
 
 .playBtn {
-  
+
+  background-color: #d81010;
+  border: 1px solid #d81010;
+  color: #ffffff;
+  font-size: 30pt; 
+  border-radius: 10%;
+  width: 70px;
+  height: 70px;
 }

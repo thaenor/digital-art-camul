@@ -5,7 +5,7 @@ import './styles.css';
 export default function PadButton() {
   return (
     <div className="noteQueueContainer">
-      <button className="playBtn">Play</button>
+      <button className="playBtn"><i class="fas fa-play-circle"></i></button>
       <ul className="noteQueue">
         <li className="note">
           <button className="container">F</button>
