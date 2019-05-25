@@ -8,28 +8,22 @@ export default function PadButton() {
     <div>
       <table>
         <tr>
-          <th class="square">1</th>
-          <th class="square">2</th>
-          <th class="square blue">3</th>
-          <th class="square">4</th>
+          <th class="square c3">Dó</th>
+          <th class="square csharp3">Dó#</th>
+          <th class="square d3">Ré</th>
+          <th class="square dsharp3">Ré#</th>
         </tr>
         <tr>
-          <th class="square">5</th>
-          <th class="square">6</th>
-          <th class="square">7</th>
-          <th class="square">8</th>
+          <th class="square e3">Mi</th>
+          <th class="square f3">Fá</th>
+          <th class="square fsharp3">Fá#</th>
+          <th class="square g3">Sol</th>
         </tr>
         <tr>
-          <th class="square">9</th>
-          <th class="square">10</th>
-          <th class="square">11</th>
-          <th class="square">12</th>
-        </tr>
-        <tr>
-          <th class="square">13</th>
-          <th class="square">14</th>
-          <th class="square">15</th>
-          <th class="square">16</th>
+          <th class="square gsharp3">Sol#</th>
+          <th class="square a3">Lá</th>
+          <th class="square asharp3">Lá#</th>
+          <th class="square b3">Si</th>
         </tr>
       </table>
     </div>
