@@ -10,10 +10,8 @@ ul {
 }
 
 .noteQueue {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
-  
 }
 
 .note {
@@ -21,7 +19,6 @@ ul {
   display: block;
   width: 50px;
   height: 50px;
-  border: 1px solid yellow;
 }
 
 .container {
@@ -33,11 +30,10 @@ ul {
 }
 
 .playBtn {
-
   background-color: #d81010;
   border: 1px solid #d81010;
   color: #ffffff;
-  font-size: 30pt; 
+  font-size: 30pt;
   border-radius: 10%;
   width: 70px;
   height: 70px;

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-export default class PadButtons extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class PadButtons extends React.PureComponent {
   onNoteClick(note) {
     this.props.onSavedNote(note);
   }

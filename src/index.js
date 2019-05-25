@@ -10,21 +10,29 @@ class App extends React.Component {
     super(props);
     this.state = {
       notes: []
-    }
+    };
+    this.onSavedNote = this.onSavedNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
 
   onSavedNote(notePlayed) {
-    console.log(notePlayed);
-    //let newNoteQueue = this.state.notes;
-    //newNoteQueue.push(notePlayed);
-    //this.setState((state) => ({ notes: newNoteQueue}));
+    let newNoteQueue = this.state.notes;
+    newNoteQueue.push(notePlayed);
+    this.setState(state => ({ notes: newNoteQueue }));
+  }
+
+  removeNote() {
+    this.setState(state => ({ notes: [] }));
   }
 
   render() {
     return (
       <div className="App">
-        <PadButtons onSavedNote={this.onSavedNote}/>
-        <NoteQueue />
+        <PadButtons onSavedNote={this.onSavedNote} />
+        <NoteQueue
+          noteList={this.state.notes}
+          removeNote={this.removeNote.bind(this)}
+        />
       </div>
     );
   }
