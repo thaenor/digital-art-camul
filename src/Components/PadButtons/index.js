@@ -22,8 +22,8 @@ export default function PadButton() {
           </th>
         </tr>
         <tr>
-          <th className="square e3">
-            <button className="container">Mi</button>
+          <th className="square">
+            <button className="e3 container">Mi</button>
           </th>
           <th className="square">
             <button className="f3 container">Fá</button>
