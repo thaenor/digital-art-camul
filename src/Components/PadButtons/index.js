@@ -1,30 +1,55 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 export default function PadButton() {
   return (
     <div>
       <table>
+        <tbody>
         <tr>
-          <th class="square c3">Dó</th>
-          <th class="square csharp3">Dó#</th>
-          <th class="square d3">Ré</th>
-          <th class="square dsharp3">Ré#</th>
+          <th className="square">
+            <button className="c3 container">Dó</button>
+          </th>
+          <th className="square">
+            <button className="csharp3 container">Dó#</button>
+          </th>
+          <th className="square">
+            <button className="d3 container">Ré</button>
+          </th>
+          <th className="square">
+            <button className="dsharp3 container">Ré#</button>
+          </th>
         </tr>
         <tr>
-          <th class="square e3">Mi</th>
-          <th class="square f3">Fá</th>
-          <th class="square fsharp3">Fá#</th>
-          <th class="square g3">Sol</th>
+          <th className="square e3">
+            <button className="container">Mi</button>
+          </th>
+          <th className="square">
+            <button className="f3 container">Fá</button>
+          </th>
+          <th className="square">
+            <button className="fsharp3 container">Fá#</button>
+          </th>
+          <th className="square">
+            <button className="g3 container">Sol</button>
+          </th>
         </tr>
         <tr>
-          <th class="square gsharp3">Sol#</th>
-          <th class="square a3">Lá</th>
-          <th class="square asharp3">Lá#</th>
-          <th class="square b3">Si</th>
+          <th className="square">
+            <button className="gsharp3 container">Sol#</button>
+          </th>
+          <th className="square">
+            <button className="a3 container">Lá</button>
+          </th>
+          <th className="square">
+            <button className="asharp3 container">Lá#</button>
+          </th>
+          <th className="square">
+            <button className="b3 container">Si</button>
+          </th>
         </tr>
+        </tbody>
       </table>
     </div>
   );

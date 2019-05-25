@@ -5,9 +5,14 @@
   display: block;
   overflow: hidden;
   float: left;
+}
+
+.container {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
   border-radius: 10%;
   box-shadow: 4px 2px #888888;
-  border: 1px solid #888888;
 }
 
 .c3 {
