@@ -1,0 +1,15 @@
+.square {
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  display: block;
+  overflow: hidden;
+  float: left;
+  border-radius: 10%;
+  box-shadow: 4px 2px #888888;
+  border: 1px solid #888888;
+}
+
+.blue {
+  background-color: blue;
+}
