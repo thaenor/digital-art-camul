@@ -1,3 +1,7 @@
+.noteQueueContainer {
+  display: flex;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -5,7 +9,7 @@ ul {
 }
 
 .noteQueue {
-  background-color: grey;
+  border: 1px solid red;
   display: flex;
   flex-direction: row;
 }
@@ -15,7 +19,15 @@ ul {
   display: block;
   width: 50px;
   height: 50px;
-  background-color: aqua;
+  border: 1px solid yellow;
+}
+
+.container {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  box-shadow: 4px 2px #888888;
 }
 
 .playBtn {
