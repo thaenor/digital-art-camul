@@ -1,5 +1,6 @@
 .noteQueueContainer {
   display: flex;
+  padding-top: 30px;
 }
 
 ul {
