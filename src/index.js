@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   removeNote() {
-    this.setState(state => ({ notes: [], isRecording: false }));
+    this.setState(state => ({ notes: state.notes.slice(1), isRecording: false }));
   }
 
   onRecordBtnPress() {
