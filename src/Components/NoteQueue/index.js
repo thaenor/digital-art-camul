@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MIDISounds from 'midi-sounds-react';
+import {draw} from '../fabric/graphics';
 
 import './styles.css';
 
@@ -14,6 +15,7 @@ export default class NoteQueue extends React.PureComponent {
         setTimeout(() => {
           this.midiSounds.playChordNow(3, [note.pitch], 0.5);
           this.props.removeNote();
+          draw(note.noteName);
         }, clock);
       });
     }

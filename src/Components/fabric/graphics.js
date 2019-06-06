@@ -1,54 +1,67 @@
-import { fabric } from "fabric";
+import { fabric } from 'fabric';
 
-export const canvas = new fabric.Canvas("c");
+export const canvas = new fabric.Canvas('c');
+export const CANVAS_HEIGHT = 500;
+export const CANVAS_WIDTH = 800;
 
 export function init() {
   // create a wrapper around native canvas element (with id="c")
+  canvas.setHeight(CANVAS_HEIGHT);
+  canvas.setWidth(CANVAS_WIDTH);
+  canvas.backgroundColor = 'white';
 
-  // create a rectangle object
-  var rect = new fabric.Rect({
-    left: 100,
-    top: 100,
-    fill: "red",
-    width: 20,
-    height: 20
-  });
-
-  rect.setGradient(
-    "fill",
-    {
-      x1: 0,
-      y1: rect.height,
-      x2: rect.width,
-      y2: rect.height,
-      colorStops: {
-        0: "red",
-        1: "blue"
-      }
-    },
-    {
-      onChange: canvas.renderAll.bind(canvas)
-    }
-  );
-
-  rect.animate("angle", 45, {
-    onChange: canvas.renderAll.bind(canvas)
-  });
-
-  // "add" rectangle onto canvas
-  canvas.add(rect);
+  // var point = new fabric.Rect({
+  //   left: 20,
+  //   top: 20,
+  //   fill: "rgb(255,0,134)",
+  //   width: 1,
+  //   height: 1
+  // })
+  // canvas.add(point);
+  // canvas.renderAll();
 }
 
-export function draw(param) {
-  if (param) {
-    var rect = new fabric.Rect({
-      left: 150,
-      top: 50,
-      fill: "orange",
-      width: 20,
-      height: 20
-    });
-    canvas.add(rect);
-    canvas.renderAll();
+export function draw(noteName) {
+  console.log(noteName);
+  
+  var rect = new fabric.Rect({
+    left: Math.floor(Math.random() * CANVAS_WIDTH) + 1,
+    top: Math.floor(Math.random() * CANVAS_HEIGHT) + 1,
+    fill: convertNoteToColor(noteName),
+    width: Math.floor(Math.random() * 50) + 20,
+    height: Math.floor(Math.random() * 50) + 20
+  });
+  canvas.add(rect);
+  canvas.renderAll();
+}
+
+function convertNoteToColor(noteName) {
+  switch (noteName) {
+    case 'Dó':
+      return '#28ff00';
+    case 'Dó#':
+      return '#00ffe8';
+    case 'Ré':
+      return '#007cff';
+    case 'Ré#':
+      return '#0500ff';
+    case 'Mi':
+      return '#4500ea';
+    case 'Fá':
+      return '#57009e';
+    case 'Fá#':
+      return '#740000';
+    case 'Sol':
+      return '#b30000';
+    case 'Sol#':
+      return '#ee0000';
+    case 'Lá':
+      return '#ff6300';
+    case 'Lá#':
+      return '#ffec00';
+    case 'Si':
+      return '#99ff00';
+    default:
+      return '#28ff00';
   }
 }
