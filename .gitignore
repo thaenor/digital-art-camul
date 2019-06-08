@@ -42,3 +42,5 @@ node_modules
 .history
 
 # End of https://www.gitignore.io/api/code
+
+build

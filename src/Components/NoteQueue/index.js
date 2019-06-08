@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MIDISounds from 'midi-sounds-react';
 
+import './styles.css';
+
 const electron = window.require('electron');
 const { ipcRenderer } = electron;
 
-import './styles.css';
 
 export default class NoteQueue extends React.PureComponent {
   componentDidMount() {
