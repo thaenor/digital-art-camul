@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MIDISounds from 'midi-sounds-react';
-import {draw} from '../fabric/graphics';
+import { draw } from '../fabric/graphics';
 
 import './styles.css';
 
 export default class NoteQueue extends React.PureComponent {
   playRecordedNotes() {
-    if(this.props.noteList.length >= 0){
+    if (this.props.noteList.length >= 0) {
       const time = 500;
       const interval = 250;
-      this.props.noteList.forEach((note,index) => {
-        const clock = time+interval*index;
+      window.external.callWindowsForm(
+        'A4ASE5ASF5E5F5E5F4FSG4GSA4ASB4C5CSD5DSE5F5F4FSG4GSE5F5F4FSG4GSA4E5FSGSCS'
+      );
+      this.props.noteList.forEach((note, index) => {
+        const clock = time + interval * index;
         setTimeout(() => {
           this.midiSounds.playChordNow(3, [note.pitch], 0.5);
           this.props.removeNote();
