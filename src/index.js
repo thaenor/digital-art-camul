@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PadButtons from "./Components/PadButtons";
 import NoteQueue from "./Components/NoteQueue";
-import { init } from "./Components/fabric/graphics";
 
 import "./styles.css";
 
@@ -15,7 +14,6 @@ class App extends React.Component {
     };
     this.onSavedNote = this.onSavedNote.bind(this);
     this.removeNote = this.removeNote.bind(this);
-    init();
   }
 
   onSavedNote(notePlayed) {
