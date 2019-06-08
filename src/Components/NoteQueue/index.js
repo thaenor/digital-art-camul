@@ -2,15 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MIDISounds from 'midi-sounds-react';
 
+const electron = window.require('electron');
+const { ipcRenderer } = electron;
+
 import './styles.css';
 
 export default class NoteQueue extends React.PureComponent {
+  componentDidMount() {
+    // Electron IPC example
+    ipcRenderer.on('manipulatedData', function(event, arg) {
+      console.log(arg);
+    });
+  }
+  componentWillUnmount() {
+    // Electron IPC example
+    ipcRenderer.removeAllListeners('manipulatedData');
+  }
+
   playRecordedNotes() {
     if (this.props.noteList.length >= 0) {
       const time = 500;
       const interval = 250;
-      
-      this.convertNoteFormat(this.props.noteList);
+
+      ipcRenderer.send(
+        'user-data',
+        this.convertNoteFormat(this.props.noteList)
+      );
 
       this.props.noteList.forEach((note, index) => {
         const clock = time + interval * index;
@@ -22,10 +39,10 @@ export default class NoteQueue extends React.PureComponent {
     }
   }
 
-  convertNoteFormat(noteList){
-    let noteString = "";
+  convertNoteFormat(noteList) {
+    let noteString = '';
     noteList.forEach((note, index) => {
-      switch(note.noteName){
+      switch (note.noteName) {
         case 'Dó':
           noteString += 'C5';
           break;
