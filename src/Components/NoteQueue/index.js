@@ -4,39 +4,11 @@ import MIDISounds from "midi-sounds-react";
 
 import "./styles.css";
 
-//we only load the electron communicators if we are running in electron
-if (window.require) {
-  const electron = window.require("electron");
-  const { ipcRenderer } = electron;
-}
-
 export default class NoteQueue extends React.PureComponent {
-  componentDidMount() {
-    if (window.require) {
-      // Electron IPC example
-      ipcRenderer.on("manipulatedData", function(event, arg) {
-        console.log(arg);
-      });
-    }
-  }
-  componentWillUnmount() {
-    if (window.require) {
-      // Electron IPC example
-      ipcRenderer.removeAllListeners("manipulatedData");
-    }
-  }
-
   playRecordedNotes() {
     if (this.props.noteList.length >= 0) {
       const time = 500;
       const interval = 250;
-
-      if (window.require) {
-        ipcRenderer.send(
-          "user-data",
-          this.convertNoteFormat(this.props.noteList)
-        );
-      }
 
       this.props.noteList.forEach((note, index) => {
         const clock = time + interval * index;
