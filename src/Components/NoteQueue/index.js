@@ -1,23 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MIDISounds from 'midi-sounds-react';
+import React from "react";
+import PropTypes from "prop-types";
+import MIDISounds from "midi-sounds-react";
 
-import './styles.css';
+import "./styles.css";
 
-const electron = window.require('electron');
-const { ipcRenderer } = electron;
-
+//we only load the electron communicators if we are running in electron
+if (window.require) {
+  const electron = window.require("electron");
+  const { ipcRenderer } = electron;
+}
 
 export default class NoteQueue extends React.PureComponent {
   componentDidMount() {
-    // Electron IPC example
-    ipcRenderer.on('manipulatedData', function(event, arg) {
-      console.log(arg);
-    });
+    if (window.require) {
+      // Electron IPC example
+      ipcRenderer.on("manipulatedData", function(event, arg) {
+        console.log(arg);
+      });
+    }
   }
   componentWillUnmount() {
-    // Electron IPC example
-    ipcRenderer.removeAllListeners('manipulatedData');
+    if (window.require) {
+      // Electron IPC example
+      ipcRenderer.removeAllListeners("manipulatedData");
+    }
   }
 
   playRecordedNotes() {
@@ -25,10 +31,12 @@ export default class NoteQueue extends React.PureComponent {
       const time = 500;
       const interval = 250;
 
-      ipcRenderer.send(
-        'user-data',
-        this.convertNoteFormat(this.props.noteList)
-      );
+      if (window.require) {
+        ipcRenderer.send(
+          "user-data",
+          this.convertNoteFormat(this.props.noteList)
+        );
+      }
 
       this.props.noteList.forEach((note, index) => {
         const clock = time + interval * index;
@@ -41,44 +49,44 @@ export default class NoteQueue extends React.PureComponent {
   }
 
   convertNoteFormat(noteList) {
-    let noteString = '';
+    let noteString = "";
     noteList.forEach((note, index) => {
       switch (note.noteName) {
-        case 'Dó':
-          noteString += 'C5';
+        case "Dó":
+          noteString += "C5";
           break;
-        case 'Dó#':
-          noteString += 'CS';
+        case "Dó#":
+          noteString += "CS";
           break;
-        case 'Ré':
-          noteString += 'D5';
+        case "Ré":
+          noteString += "D5";
           break;
-        case 'Ré#':
-          noteString += 'DS';
+        case "Ré#":
+          noteString += "DS";
           break;
-        case 'Mi':
-          noteString += 'E5';
+        case "Mi":
+          noteString += "E5";
           break;
-        case 'Fá':
-          noteString += 'F4';
+        case "Fá":
+          noteString += "F4";
           break;
-        case 'Fá#':
-          noteString += 'FS';
+        case "Fá#":
+          noteString += "FS";
           break;
-        case 'Sol':
-          noteString += 'G4';
+        case "Sol":
+          noteString += "G4";
           break;
-        case 'Sol#':
-          noteString += 'GS';
+        case "Sol#":
+          noteString += "GS";
           break;
-        case 'Lá':
-          noteString += 'A4';
+        case "Lá":
+          noteString += "A4";
           break;
-        case 'Lá#':
-          noteString += 'AS';
+        case "Lá#":
+          noteString += "AS";
           break;
-        case 'Si':
-          noteString += 'B4';
+        case "Si":
+          noteString += "B4";
           break;
         default:
           break;
@@ -93,46 +101,46 @@ export default class NoteQueue extends React.PureComponent {
 
   render() {
     const recordClasses = this.props.isRecording
-      ? 'recordBtn recording'
-      : 'recordBtn';
+      ? "recordBtn recording"
+      : "recordBtn";
     const listOfNotes = this.props.noteList.map((e, i) => {
       let noteColor;
       switch (e.noteName) {
-        case 'Dó':
-          noteColor = 'c3';
+        case "Dó":
+          noteColor = "c3";
           break;
-        case 'Dó#':
-          noteColor = 'csharp3';
+        case "Dó#":
+          noteColor = "csharp3";
           break;
-        case 'Ré':
-          noteColor = 'd3';
+        case "Ré":
+          noteColor = "d3";
           break;
-        case 'Ré#':
-          noteColor = 'dsharp3';
+        case "Ré#":
+          noteColor = "dsharp3";
           break;
-        case 'Mi':
-          noteColor = 'e3';
+        case "Mi":
+          noteColor = "e3";
           break;
-        case 'Fá':
-          noteColor = 'f3';
+        case "Fá":
+          noteColor = "f3";
           break;
-        case 'Fá#':
-          noteColor = 'fsharp3';
+        case "Fá#":
+          noteColor = "fsharp3";
           break;
-        case 'Sol':
-          noteColor = 'g3';
+        case "Sol":
+          noteColor = "g3";
           break;
-        case 'Sol#':
-          noteColor = 'gsharp3';
+        case "Sol#":
+          noteColor = "gsharp3";
           break;
-        case 'Lá':
-          noteColor = 'a3';
+        case "Lá":
+          noteColor = "a3";
           break;
-        case 'Lá#':
-          noteColor = 'asharp3';
+        case "Lá#":
+          noteColor = "asharp3";
           break;
-        case 'Si':
-          noteColor = 'b3';
+        case "Si":
+          noteColor = "b3";
           break;
         default:
           break;
