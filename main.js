@@ -4,6 +4,28 @@ const ipcMain = require('electron').ipcMain;
 // Electron IPC example
 ipcMain.on('user-data', function(event, arg) {
   console.log(arg);
+
+  try {
+    const { spawn } = require('child_process');
+    const pathToScript = path.resolve("/temp/colorharp.exe");
+    console.log(pathToScript);
+    const bat = spawn(pathToScript, [arg]);
+  
+    bat.stdout.on('data', (data) => {
+      console.log(data.toString());
+    });
+    
+    bat.stderr.on('data', (data) => {
+      console.log(data.toString());
+    });
+    
+    bat.on('exit', (code) => {
+      console.log(`Child exited with code ${code}`);
+    }); 
+  } catch (error) {
+    console.error('failed to run windows color harp => ', error);
+  }
+
   //let spawn = require("child_process").spawn;
   //do child process or other data manipulation and name it manData
   event.sender.send('manipulatedData', 'COOL info!');
@@ -17,8 +39,6 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 // const url = require('url')
 
-const isDev = process.env.ELECTRON_IS_DEV;
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -28,11 +48,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(
-    isDev
-      ? 'http://localhost:3000' // Dev server ran by react-scripts
-      : `file://${path.join(__dirname, '/build/index.html')}` // Bundled application
-  );
+  mainWindow.loadURL('http://localhost:3000');
   // mainWindow.loadURL(url.format({
   //   pathname: path.join(__dirname, 'index.html'),
   //   protocol: 'file:',
