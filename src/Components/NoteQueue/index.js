@@ -145,11 +145,12 @@ export default class NoteQueue extends React.PureComponent {
         </li>
       );
     });
+    let sentence = `${this.props.isRecording ? 'stop' : 'start'} recording`;
     return (
       <>
         <div className="noteQueueContainer">
           <button
-            aria-label="Recording"
+            aria-label={sentence}
             className={recordClasses}
             onClick={this.toggleRecordBtn.bind(this)}
           >
