@@ -149,12 +149,14 @@ export default class NoteQueue extends React.PureComponent {
       <>
         <div className="noteQueueContainer">
           <button
+            aria-label="Recording"
             className={recordClasses}
             onClick={this.toggleRecordBtn.bind(this)}
           >
             <i className="fas fa-microphone-alt" />
           </button>
           <button
+            aria-label="Play"
             className="playBtn"
             onClick={this.playRecordedNotes.bind(this)}
           >
