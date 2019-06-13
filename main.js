@@ -7,7 +7,7 @@ ipcMain.on('user-data', function(event, arg) {
 
   try {
     const { spawn } = require('child_process');
-    const pathToScript = path.resolve("/temp/colorharp.exe");
+    const pathToScript = path.resolve(`${__dirname}/colorharp.exe`);
     console.log(pathToScript);
     const bat = spawn(pathToScript, [arg]);
   
