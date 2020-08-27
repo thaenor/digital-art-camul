@@ -9,7 +9,7 @@
     "react-dom": "16.8.6",
     "react-scripts": "2.1.8",
     "midi-sounds-react": "1.2.54",
-    "electron": ">=1.8.8",
+    "electron": ">=7.2.4",
     "electron-packager": "11.1.0"
   },
   "devDependencies": {
